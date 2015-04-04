@@ -1,9 +1,13 @@
 {
   "name": "react-native-ui",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "babel src --out-dir build",
+    "prepublish": "npm run build && babel-node publish.js prepublish",
+    "postpublish": "babel-node publish.js postpublish",
+    "lint": "eslint src",
+    "test": "npm run lint"
   },
   "repository": {
     "type": "git",
@@ -14,5 +18,10 @@
   "bugs": {
     "url": "https://github.com/ambitioninc/react-native-ui/issues"
   },
-  "homepage": "https://github.com/ambitioninc/react-native-ui"
+  "homepage": "https://github.com/ambitioninc/react-native-ui",
+  "devDependencies": {
+    "babel": "^5.0.8",
+    "eslint": "^0.18.0",
+    "rimraf": "^2.3.2"
+  }
 }
