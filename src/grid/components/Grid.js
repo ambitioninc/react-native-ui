@@ -2,12 +2,16 @@ import React from 'react-native';
 import {Text, View} from 'react-native';
 
 
-class Grid extends React.component {
+const Grid = React.createClass({
     render() {
         return (
             <View>
-                <Text>Grid Component</Text>
+                <Text>
+                    React Native Grid
+                </Text>
             </View>
         );
     }
-}
+});
+
+export default Grid;
