@@ -3,10 +3,10 @@
   "version": "0.0.5",
   "main": "index.js",
   "scripts": {
-    "build": "babel src --out-dir build",
+    "build": "babel src --out-dir lib",
     "prepublish": "npm run build && babel-node publish.js prepublish",
     "postpublish": "babel-node publish.js postpublish",
-    "lint": "eslint src",
+    "lint": "eslint publish.js src",
     "test": "npm run lint"
   },
   "repository": {

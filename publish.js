@@ -1,16 +1,23 @@
+/* eslint-env node */
+
 import fs from 'fs';
 import rm from 'rimraf';
 
+function noop() {}
 
 function prepublish() {
-    fs.readdir('build', (err, files) => {
+    fs.readdir('lib', (err, files) => {
+        if (err) {
+            return;
+        }
+
         files.forEach((file) => {
             const name = file.replace('.js', '');
             const filePath = name === 'index' ? file : `${file}/index.js`;
             const contents = [
                 `'use strict';`,
                 '',
-                `module.exports = require('./build/${filePath}');`
+                `module.exports = require('./lib/${filePath}');`
             ].join('\n');
 
             fs.writeFile(`./${name}.js`, contents);
@@ -19,15 +26,19 @@ function prepublish() {
 }
 
 function postpublish() {
-    fs.readdir('build', (err, files) => {
+    fs.readdir('lib', (err, files) => {
+        if (err) {
+            return;
+        }
+
         files.forEach((file) => {
             const name = file.replace('.js', '');
 
-            rm(`${name}.js`, _ => _);
+            rm(`${name}.js`, noop);
         });
     });
 
-    rm('./build', _ => _);
+    rm('./lib', noop);
 }
 
 function main() {
