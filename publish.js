@@ -26,6 +26,8 @@ function postpublish() {
             rm(`${name}.js`, _ => _);
         });
     });
+
+    rm('./build', _ => _);
 }
 
 function main() {
