@@ -9,11 +9,6 @@ To install the latest release:
 npm install react-native-ui
 ```
 
-To build the latest code directly from source:
-```shell
-npm install git://github.com/ambitioninc/react-native-ui.git
-```
-
 ## Documentation
 
 Full documentation will be available eventually.
